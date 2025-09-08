@@ -1,5 +1,8 @@
-{% extends 'inquiry/base.html' %}
-{% block title %}{{ inquiry.title }} - 問い合わせ管理システム{% endblock %}
+{% extends 'layouts/base.html' %}
+{% load widget_tweaks %}
+{% block title %}
+    {{ inquiry.title }} - 問い合わせ管理システム
+{% endblock title %}
 {% block content %}
     <div class="space-y-6">
         <!-- ヘッダー -->
@@ -67,8 +70,7 @@
                             {% csrf_token %}
                             <div class="space-y-4">
                                 <div>
-                                    {{ response_form.content.label_tag }}
-                                    {{ response_form.content }}
+                                    {% render_field response_form.content class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500" %}
                                 </div>
                                 <div class="flex items-center">
                                     {{ response_form.is_internal }}
@@ -173,11 +175,11 @@
                             <i class="fas fa-book mr-2"></i>関連ナレッジ
                         </h3>
                         <div class="space-y-2">
-                            <a href="{% url 'inquiry:knowledge_create' %}"
+                            <a href="{% url 'knowledge:knowledge_create' %}"
                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
                                 <i class="fas fa-plus mr-2"></i>ナレッジ作成
                             </a>
-                            <a href="{% url 'inquiry:knowledge_list' %}"
+                            <a href="{% url 'knowledge:knowledge_list' %}"
                                class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                 <i class="fas fa-search mr-2"></i>ナレッジ検索
                             </a>

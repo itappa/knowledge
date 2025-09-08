@@ -1,5 +1,7 @@
-{% extends 'inquiry/base.html' %}
-{% block title %}ナレッジ一覧 - 問い合わせ管理システム{% endblock %}
+{% extends 'layouts/base.html' %}
+{% block title %}
+    ナレッジ一覧 - 問い合わせ管理システム
+{% endblock title %}
 {% block content %}
     <div class="space-y-6">
         <!-- ヘッダー -->
@@ -8,7 +10,7 @@
                 <h1 class="text-2xl font-bold text-gray-900">ナレッジ一覧</h1>
                 <p class="mt-1 text-sm text-gray-500">ナレッジベースの管理と検索</p>
             </div>
-            <a href="{% url 'inquiry:knowledge_create' %}"
+            <a href="{% url 'knowledge:knowledge_create' %}"
                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
                 <i class="fas fa-plus mr-2"></i>新規作成
             </a>
@@ -42,7 +44,7 @@
                                 class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
                             <i class="fas fa-search mr-2"></i>検索
                         </button>
-                        <a href="{% url 'inquiry:knowledge_list' %}"
+                        <a href="{% url 'knowledge:knowledge_list' %}"
                            class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                             <i class="fas fa-times mr-2"></i>クリア
                         </a>
@@ -115,7 +117,7 @@
                 <div class="px-4 py-8 text-center">
                     <i class="fas fa-book text-4xl text-gray-300 mb-4"></i>
                     <p class="text-gray-500">ナレッジがありません。</p>
-                    <a href="{% url 'inquiry:knowledge_create' %}"
+                    <a href="{% url 'knowledge:knowledge_create' %}"
                        class="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
                         <i class="fas fa-plus mr-2"></i>最初のナレッジを作成
                     </a>

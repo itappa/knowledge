@@ -1,17 +1,6 @@
 from django.contrib import admin
-from django.utils.html import format_html
-from django.urls import reverse
-from django.utils.safestring import mark_safe
-from .models import Category, Inquiry, Response, Knowledge, Attachment, Tag
+from .models import Inquiry, Response, Attachment
 from django.utils import timezone
-
-
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ["name", "description", "parent", "created_at"]
-    list_filter = ["parent"]
-    search_fields = ["name", "description"]
-    prepopulated_fields = {"description": ("name",)}
 
 
 class ResponseInline(admin.TabularInline):
@@ -80,41 +69,9 @@ class ResponseAdmin(admin.ModelAdmin):
     readonly_fields = ["created_at"]
 
 
-@admin.register(Knowledge)
-class KnowledgeAdmin(admin.ModelAdmin):
-    list_display = [
-        "title",
-        "category",
-        "author",
-        "is_public",
-        "view_count",
-        "updated_at",
-    ]
-    list_filter = ["category", "author", "is_public", "created_at"]
-    search_fields = ["title", "content", "tags"]
-    readonly_fields = ["view_count", "created_at", "updated_at"]
-
-    fieldsets = (
-        ("基本情報", {"fields": ("title", "content", "category", "tags")}),
-        ("管理情報", {"fields": ("author", "is_public", "view_count")}),
-        ("関連情報", {"fields": ("related_inquiries",), "classes": ("collapse",)}),
-        (
-            "日時情報",
-            {"fields": ("created_at", "updated_at"), "classes": ("collapse",)},
-        ),
-    )
-
-
 @admin.register(Attachment)
 class AttachmentAdmin(admin.ModelAdmin):
     list_display = ["filename", "inquiry", "uploaded_at"]
     list_filter = ["uploaded_at"]
     search_fields = ["filename", "inquiry__title"]
     readonly_fields = ["uploaded_at"]
-
-
-@admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
-    list_display = ["name", "created_at"]
-    search_fields = ["name"]
-    readonly_fields = ["created_at"]

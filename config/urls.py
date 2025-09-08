@@ -7,7 +7,9 @@ urlpatterns = (
     [
         path("admin/", admin.site.urls),
         path("accounts/", include("allauth.urls")),
-        path("", include("inquiry.urls")),
+        path("inquiry/", include("inquiry.urls")),
+        path("knowledge/", include("knowledge.urls")),
+        path("", include("common.urls")),
     ]
     + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

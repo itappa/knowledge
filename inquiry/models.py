@@ -1,45 +1,9 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils import timezone
-from mptt.models import MPTTModel, TreeForeignKey
+from common.models import Category, Tag
 
 User = get_user_model()
-
-
-class Tag(models.Model):
-    """タグ"""
-
-    name = models.CharField("タグ名", max_length=50, unique=True)
-    created_at = models.DateTimeField("作成日時", auto_now_add=True)
-
-    class Meta:
-        verbose_name = "タグ"
-        verbose_name_plural = "タグ"
-
-    def __str__(self):
-        return self.name
-
-
-class Category(MPTTModel):
-    """カテゴリ（階層構造）"""
-
-    name = models.CharField("カテゴリ名", max_length=100)
-    description = models.TextField("説明", blank=True)
-    parent = TreeForeignKey(
-        "self", on_delete=models.CASCADE, null=True, blank=True, related_name="children"
-    )
-    created_at = models.DateTimeField("作成日時", auto_now_add=True)
-    updated_at = models.DateTimeField("更新日時", auto_now=True)
-
-    class MPTTMeta:
-        order_insertion_by = ["name"]
-
-    class Meta:
-        verbose_name = "カテゴリ"
-        verbose_name_plural = "カテゴリ"
-
-    def __str__(self):
-        return self.name
 
 
 class Inquiry(models.Model):
@@ -127,47 +91,6 @@ class Response(models.Model):
 
     def __str__(self):
         return f"{self.inquiry.title} - {self.responder}"
-
-
-class Knowledge(models.Model):
-    """ナレッジベース"""
-
-    title = models.CharField("タイトル", max_length=200)
-    content = models.TextField("内容")
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        verbose_name="カテゴリ",
-    )
-    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="作成者")
-
-    is_public = models.BooleanField("公開", default=True)
-    view_count = models.PositiveIntegerField("閲覧回数", default=0)
-
-    related_inquiries = models.ManyToManyField(
-        Inquiry, blank=True, verbose_name="関連問い合わせ"
-    )
-
-    created_at = models.DateTimeField("作成日時", auto_now_add=True)
-    updated_at = models.DateTimeField("更新日時", auto_now=True)
-
-    tags = models.CharField(
-        "タグ", max_length=500, blank=True, help_text="カンマ区切りで入力"
-    )
-
-    class Meta:
-        verbose_name = "ナレッジ"
-        verbose_name_plural = "ナレッジ"
-        ordering = ["-updated_at"]
-
-    def __str__(self):
-        return self.title
-
-    def increment_view_count(self):
-        self.view_count += 1
-        self.save(update_fields=["view_count"])
 
 
 class Attachment(models.Model):
