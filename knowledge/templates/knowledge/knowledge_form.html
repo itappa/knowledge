@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% load widget_tweaks %}
 {% block title %}
     {% if object %}
         ナレッジ編集
@@ -37,26 +38,34 @@
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                {{ form.title.label_tag }}
-                                {{ form.title }}
+                                <label for="email" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ form.title.label }}</label>
+                                <div class="mt-2">
+                                    {% render_field form.title class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500" %}
+                                </div>
                                 {% if form.title.errors %}<p class="mt-1 text-sm text-red-600">{{ form.title.errors.0 }}</p>{% endif %}
                             </div>
                             <div>
-                                {{ form.category.label_tag }}
-                                {{ form.category }}
+                                <label for="location" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ form.category.label }}</label>
+                                <div class="mt-2 grid grid-cols-1">
+                                    {% render_field form.category class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:*:bg-gray-800 dark:focus-visible:outline-indigo-500" %}
+                                <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 dark:text-gray-400">
+                                    <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+                                </svg>
+                                </div>
                                 {% if form.category.errors %}<p class="mt-1 text-sm text-red-600">{{ form.category.errors.0 }}</p>{% endif %}
                             </div>
                         </div>
                         <div class="mt-4">
-                            {{ form.content.label_tag }}
-                            {{ form.content }}
+                            <label for="location" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ form.content.label }}</label>
+                            {% render_field form.content class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500" %}
                             {% if form.content.errors %}<p class="mt-1 text-sm text-red-600">{{ form.content.errors.0 }}</p>{% endif %}
                         </div>
                         <div class="mt-4">
-                            {{ form.tags.label_tag }}
-                            {{ form.tags }}
+                            <label for="email" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ form.tags.label }}</label>
+                                <div class="mt-2">
+                                    {% render_field form.tags class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500" %}
+                                </div>
                             {% if form.tags.errors %}<p class="mt-1 text-sm text-red-600">{{ form.tags.errors.0 }}</p>{% endif %}
-                            <p class="mt-1 text-sm text-gray-500">{{ form.tags.help_text }}</p>
                         </div>
                     </div>
                     <!-- 管理情報 -->

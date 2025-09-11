@@ -1,4 +1,5 @@
 {% extends 'layouts/base.html' %}
+{% load widget_tweaks %}
 {% block title %}
     問い合わせ一覧 - 問い合わせ管理システム
 {% endblock title %}
@@ -25,33 +26,69 @@
                 </h3>
                 <form method="get"
                       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div>
-                        {{ search_form.q.label_tag }}
-                        {{ search_form.q }}
+                    <div class="col-span-full">
+                        <label for="{{ search_form.q.id_for_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ search_form.q.label }}</label>
+                        <div class="mt-2 grid grid-cols-1">
+                            {% render_field search_form.q class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500" %}
+                        </div>
                     </div>
                     <div>
-                        {{ search_form.status.label_tag }}
-                        {{ search_form.status }}
+                        <label for="{{ search_form.status.id_for_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ search_form.status.label }}</label>
+                        <div class="mt-2 grid grid-cols-1">
+                            {% render_field search_form.status class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:*:bg-gray-800 dark:focus-visible:outline-indigo-500" %}
+                            <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 dark:text-gray-400">
+                                <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                        </div>
                     </div>
                     <div>
-                        {{ search_form.priority.label_tag }}
-                        {{ search_form.priority }}
+                        <label for="{{ search_form.priority.id_for_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ search_form.priority.label }}</label>
+                        <div class="mt-2 grid grid-cols-1">
+                            {% render_field search_form.priority class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:*:bg-gray-800 dark:focus-visible:outline-indigo-500" %}
+                            <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 dark:text-gray-400">
+                                <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                        </div>
                     </div>
                     <div>
-                        {{ search_form.category.label_tag }}
-                        {{ search_form.category }}
+                        <label for="{{ search_form.category.id_for_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ search_form.category.label }}</label>
+                        <div class="mt-2 grid grid-cols-1">
+                            {% render_field search_form.category class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:*:bg-gray-800 dark:focus-visible:outline-indigo-500" %}
+                            <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 dark:text-gray-400">
+                                <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                        </div>
                     </div>
                     <div>
-                        {{ search_form.assigned_to.label_tag }}
-                        {{ search_form.assigned_to }}
+                        <label for="{{ search_form.assigned_to.id_for_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ search_form.assigned_to.label }}</label>
+                        <div class="mt-2 grid grid-cols-1">
+                            {% render_field search_form.assigned_to class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:*:bg-gray-800 dark:focus-visible:outline-indigo-500" %}
+                            <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 dark:text-gray-400">
+                                <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                        </div>
                     </div>
                     <div>
-                        {{ search_form.date_from.label_tag }}
-                        {{ search_form.date_from }}
+                        <label for="{{ search_form.date_from.id_for_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ search_form.date_from.label }}</label>
+                        <div class="relative max-w-sm">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                </svg>
+                            </div>
+                            {% render_field search_form.date_from|attr:"datepicker"|attr:"datepicker-autohide"|attr:"datepicker-buttons"|attr:"datepicker-autoselect-today"|attr:"datepicker-format=yyyy/mm/dd"|attr:"type:text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" %}
+                        </div>
                     </div>
                     <div>
-                        {{ search_form.date_to.label_tag }}
-                        {{ search_form.date_to }}
+                        <label for="{{ search_form.date_to.id_for_label }}" class="block text-sm/6 font-medium text-gray-900 dark:text-white">{{ search_form.date_to.label }}</label>
+                        <div class="relative max-w-sm">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                </svg>
+                            </div>
+                            {% render_field search_form.date_to|attr:"datepicker"|attr:"datepicker-autohide"|attr:"datepicker-buttons"|attr:"datepicker-autoselect-today"|attr:"datepicker-format=yyyy/mm/dd"|attr:"type:text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" %}
+                        </div>
                     </div>
                     <div class="flex items-end space-x-2">
                         <button type="submit"
